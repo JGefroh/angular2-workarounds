@@ -21,7 +21,7 @@ API operations is a huge win in making the actual services rather small.
 
 ##### Sample Usage
 `events.service.ts`
-```
+```typescript
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response} from '@angular/http';
 import { JGHttp, JGHttpConfig } from './jg-http';
@@ -38,6 +38,33 @@ export class EventsService extends JGHttp {
   }
 }
 ```
+
+`events.component.ts`
+```typescript
+//...other imports
+import { EventsService } from './events.service';
+
+
+@Component({
+  //...component metadata
+})
+export class EventsComponent {
+  constructor(public eventsService: EventsService) {
+  }
+
+
+  sayHello(): void {
+    this.eventsService.hello();
+  }
+
+  getEvents(): void {
+    this.eventsService.query().then(events => {
+      console.info(events);
+    });
+  }
+}
+```
+
 
 ##### Improvements to be made
 * Turn the web service base URL into a variable which can be injected into the http service depending on the environment.
