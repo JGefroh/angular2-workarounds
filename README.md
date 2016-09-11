@@ -41,3 +41,5 @@ export class EventsService extends JGHttp {
 
 ##### Improvements to be made
 * Turn the web service base URL into a variable which can be injected into the http service depending on the environment.
+* Test this in an actual application.
+* Header injection.
